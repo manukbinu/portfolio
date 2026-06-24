@@ -1,0 +1,486 @@
+<!-- NAVBAR -->
+<nav class="navbar" [class.scrolled]="scrolled()">
+  <div class="nav-container">
+    <a class="logo" (click)="scrollTo('#hero')">Manu K Binu</a>
+    <ul class="nav-links" [class.open]="menuOpen()">
+      <li *ngFor="let link of navLinks">
+        <a (click)="scrollTo(link.href)" [class.active]="activeSection() === link.href.replace('#','')">
+          {{ link.label }}
+        </a>
+      </li>
+      <li>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail4manukbinu@gmail.com&su=Hiring%20Inquiry%20%E2%80%94%20Manu%20K%20Binu" target="_blank" rel="noopener" class="nav-cta">Hire Me</a>
+      </li>
+    </ul>
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+  </div>
+  <div class="hero-split">
+    <!-- LEFT: Text -->
+    <div class="hero-content">
+      <p class="hero-greeting"><i class="fa-solid fa-hand-wave"></i> Hello, I'm</p>
+      <h1 class="hero-name">Manu K Binu</h1>
+      <h2 class="hero-title">
+        <span class="typing-text">IT Project Manager</span>
+        <span class="title-sep"> &middot; </span>
+        <span>Agile Delivery</span>
+        <span class="title-sep"> &middot; </span>
+        <span>Enterprise Software</span>
+      </h2>
+      <p class="hero-sub">
+        Technical Project Manager with <strong>4+ years</strong> of experience leading Agile delivery across ERP,
+        ESG compliance, and risk management — combining hands-on development with AI-powered workflows.
+      </p>
+      <div class="hero-badges">
+        <span class="badge"><i class="fa-solid fa-location-dot"></i> UAE (Available Immediately)</span>
+        <span class="badge"><i class="fa-solid fa-briefcase"></i> Open to Hybrid / On-site</span>
+      </div>
+      <div class="hero-actions">
+        <button (click)="openJourney()" class="btn btn-journey">
+          <i class="fa-solid fa-compass"></i> Explore My Journey
+        </button>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mail4manukbinu@gmail.com&amp;su=Hello%20Manu" target="_blank" rel="noopener" class="btn btn-primary">
+          <i class="fa-solid fa-envelope"></i> Get In Touch
+        </a>
+        <a href="Manu-K-Binu-CV.pdf" download="Manu-K-Binu-CV.pdf" class="btn btn-outline">
+          <i class="fa-solid fa-download"></i> Download CV
+        </a>
+        <a href="https://www.linkedin.com/in/manu-k-binu-613b081b9" target="_blank" class="btn btn-outline">
+          <i class="fa-brands fa-linkedin"></i> LinkedIn
+        </a>
+        <a (click)="scrollTo('#experience')" class="btn btn-ghost">
+          <i class="fa-solid fa-arrow-down"></i> View Work
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Photo -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <div class="hero-photo-inner">
+          <img src="manu.jpg" alt="Manu K Binu" class="hero-photo" />
+        </div>
+      </div>
+      <!-- Floating stat chips -->
+      <div class="hero-chip chip-top">
+        <i class="fa-solid fa-trophy"></i>
+        <span>Employee of the Year 2023</span>
+      </div>
+      <div class="hero-chip chip-bottom">
+        <i class="fa-solid fa-robot"></i>
+        <span>AI-Powered PM</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Who I Am</span>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-avatar">
+        <div class="avatar-ring">
+          <div class="avatar-inner">
+            <img src="manu.jpg" alt="Manu K Binu" class="avatar-photo" />
+          </div>
+        </div>
+        <div class="avatar-awards">
+          <div class="award-chip" *ngFor="let award of awards">
+            <i class="fa-solid {{ award.icon }}"></i>
+            <div>
+              <strong>{{ award.title }}</strong>
+              <span>{{ award.desc }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          I'm a <strong>Technical Project Manager</strong> with a hands-on background in full-stack development.
+          I bridge the gap between business requirements and engineering execution — managing 2–3 concurrent
+          project workstreams end-to-end across requirement gathering, sprint planning, stakeholder communication,
+          risk mitigation, and on-time delivery.
+        </p>
+        <p>
+          My edge: I combine deep technical fluency in <strong>Angular, .NET Core, and SQL Server</strong> with
+          strong Agile leadership — meaning I can challenge estimates, unblock engineers, and make credible
+          technical decisions alongside PMs and architects.
+        </p>
+        <p>
+          I'm an early adopter of <strong>AI-assisted project delivery</strong> — using Claude AI and ChatGPT
+          to accelerate documentation, sprint planning, code reviews, and testing — improving team velocity
+          and delivery quality.
+        </p>
+        <p>
+          Above all, I'm a <strong>fast learner</strong> — I grasp new technologies, tools, and business
+          domains quickly and get productive almost immediately. That ability to ramp up fast is exactly
+          what earned me a <strong>Quick Learner Award</strong>.
+        </p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num">4+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">20+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">~60%</span>
+            <span class="stat-label">AI Velocity Gain</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Awards Won</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">What I Do</span>
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+    </div>
+
+    <div class="skills-block">
+      <h3 class="skills-subtitle"><i class="fa-solid fa-diagram-project"></i> Project Management</h3>
+      <div class="tag-cloud">
+        <span class="tag" *ngFor="let skill of pmSkills">{{ skill }}</span>
+      </div>
+    </div>
+
+    <div class="skills-block">
+      <h3 class="skills-subtitle"><i class="fa-solid fa-code"></i> Technical Skills</h3>
+      <div class="tech-grid">
+        <div class="tech-card" *ngFor="let group of techSkills">
+          <h4 class="tech-cat">{{ group.category }}</h4>
+          <div class="tech-tags">
+            <span class="tag tag-tech" *ngFor="let item of group.items">{{ item }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Career</span>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let exp of experiences">
+        <div class="timeline-dot" [class.current]="exp.current">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <h3 class="timeline-role">{{ exp.role }}</h3>
+              <p class="timeline-company"><i class="fa-solid fa-building"></i> {{ exp.company }}</p>
+            </div>
+            <span class="timeline-period" [class.current-badge]="exp.current">
+              <i class="fa-regular fa-calendar"></i> {{ exp.period }}
+            </span>
+          </div>
+          <ul class="timeline-bullets">
+            <li *ngFor="let b of exp.bullets"><i class="fa-solid fa-chevron-right"></i> {{ b }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Key Enterprise Projects</h2>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let proj of projects">
+        <div class="project-icon">
+          <i class="fa-solid {{ proj.icon }}"></i>
+        </div>
+        <h3 class="project-name">{{ proj.name }}</h3>
+        <p class="project-desc">{{ proj.description }}</p>
+        <ul class="project-bullets">
+          <li *ngFor="let b of proj.bullets"><i class="fa-solid fa-check"></i> {{ b }}</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag" *ngFor="let s of proj.stack">{{ s }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Recognition</span>
+      <h2 class="section-title">Awards &amp; Highlights</h2>
+    </div>
+    <div class="recognition-grid">
+      <!-- LinkedIn Post Card -->
+      <a href="https://www.linkedin.com/posts/ionob-stimes-leadership-share-7430501828020121600-6G4v/" target="_blank" class="linkedin-post-card">
+        <div class="lp-header">
+          <div class="lp-brand">
+            <div class="lp-logo"><i class="fa-brands fa-linkedin"></i></div>
+            <div>
+              <span class="lp-company">ioNob Innovations LLP</span>
+              <span class="lp-meta">5,252 followers &middot; LinkedIn Post</span>
+            </div>
+          </div>
+          <span class="lp-badge"><i class="fa-solid fa-star"></i> Featured</span>
+        </div>
+        <blockquote class="lp-quote">
+          "3 years. 36 months. 1,095 days of keeping projects on track and teams inspired."
+        </blockquote>
+        <p class="lp-body">
+          ioNob celebrated Manu K Binu's 3-year work anniversary, recognising him as someone who
+          <strong>leads people, not just tasks</strong> — turning chaos into clarity, deadlines into
+          deliveries, and stress into solutions.
+        </p>
+        <div class="lp-tags">
+          <span>#Leadership</span><span>#ProjectManager</span><span>#3YearsStrong</span><span>#TeamLeader</span>
+        </div>
+        <div class="lp-footer">
+          <span><i class="fa-solid fa-heart"></i> 73 reactions</span>
+          <span><i class="fa-solid fa-comment"></i> 29 comments</span>
+          <span class="lp-cta">View on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+        </div>
+      </a>
+
+      <!-- Awards column -->
+      <div class="award-cards">
+        <div class="award-card">
+          <div class="award-icon gold"><i class="fa-solid fa-trophy"></i></div>
+          <div class="award-info">
+            <h3>Employee of the Year 2023</h3>
+            <p>Awarded by Ionob Innovations LLP for consistent delivery performance and outstanding contribution to team goals.</p>
+            <span class="award-company"><i class="fa-solid fa-building"></i> Ionob Innovations LLP</span>
+          </div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon cyan"><i class="fa-solid fa-bolt"></i></div>
+          <div class="award-info">
+            <h3>Quick Learner Award</h3>
+            <p>Recognised for rapidly adapting to new technologies and project requirements across multiple workstreams.</p>
+            <span class="award-company"><i class="fa-solid fa-building"></i> Ionob Innovations LLP</span>
+          </div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="award-info">
+            <h3>3-Year Work Anniversary</h3>
+            <p>Celebrated by ioNob for 3 years of leadership, project excellence, and team inspiration.</p>
+            <span class="award-company"><i class="fa-solid fa-building"></i> Ionob Innovations LLP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Background</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="edu-body">
+        <h3>Diploma in Computer Engineering</h3>
+        <p class="edu-institute"><i class="fa-solid fa-school"></i> Carmel Polytechnic College, Alappuzha</p>
+        <p class="edu-year"><i class="fa-regular fa-calendar"></i> 2018 – 2021</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Let's Talk</span>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">
+        I'm actively looking for Project Manager / Technical Lead roles in UAE.
+        Open to hybrid or on-site. Available immediately.
+      </p>
+    </div>
+    <div class="contact-grid">
+      <a href="mailto:mail4manukbinu@gmail.com" class="contact-card">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">mail4manukbinu&#64;gmail.com</span>
+        </div>
+      </a>
+      <a href="tel:+971541660983" class="contact-card">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <span class="contact-label">Phone (UAE)</span>
+          <span class="contact-value">+971 541 660 983</span>
+        </div>
+      </a>
+      <a href="tel:+918129660117" class="contact-card">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <span class="contact-label">Phone (India)</span>
+          <span class="contact-value">+91 812 966 0117</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/manu-k-binu-613b081b9" target="_blank" class="contact-card">
+        <i class="fa-brands fa-linkedin"></i>
+        <div>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/manukbinu</span>
+        </div>
+      </a>
+      <a href="https://github.com/manukbinu" target="_blank" class="contact-card">
+        <i class="fa-brands fa-github"></i>
+        <div>
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/manukbinu</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/__mr___mysterious___" target="_blank" class="contact-card">
+        <i class="fa-brands fa-instagram"></i>
+        <div>
+          <span class="contact-label">Instagram</span>
+          <span class="contact-value">&#64;__mr___mysterious___</span>
+        </div>
+      </a>
+      <div class="contact-card no-link">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>
+          <span class="contact-label">Location</span>
+          <span class="contact-value">UAE</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-cta">
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mail4manukbinu@gmail.com&amp;su=Hello%20Manu" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-paper-plane"></i> Send Me a Message
+      </a>
+      <a href="Manu-K-Binu-CV.pdf" download="Manu-K-Binu-CV.pdf" class="btn btn-outline btn-lg">
+        <i class="fa-solid fa-download"></i> Download CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PREZI-STYLE ZOOMABLE JOURNEY -->
+<div class="journey-overlay" [class.open]="journeyOpen()">
+  <div class="journey-stage">
+    <div class="journey-canvas">
+      <!-- connector lines (system/dependency map) -->
+      <svg class="journey-links" viewBox="0 0 3000 2000" preserveAspectRatio="none">
+        <line *ngFor="let n of linkNodes"
+              [attr.x1]="1500" [attr.y1]="1000" [attr.x2]="n.x" [attr.y2]="n.y"
+              [class.lit]="journeyActiveNode() === n.id" />
+      </svg>
+
+      <!-- nodes -->
+      <div *ngFor="let n of journeyNodes"
+           class="jnode" [ngClass]="'jnode-' + n.kind"
+           [class.active]="journeyActiveNode() === n.id"
+           [style.left.px]="n.x" [style.top.px]="n.y"
+           (click)="goToNode(n.id)">
+        <div class="jnode-tag">{{ n.tag }}</div>
+        <div class="jnode-icon"><i class="fa-solid {{ n.icon }}"></i></div>
+        <h3 class="jnode-title">{{ n.title }}</h3>
+        <p class="jnode-sub">{{ n.sub }}</p>
+        <ul class="jnode-list" *ngIf="n.items.length">
+          <li *ngFor="let it of n.items">{{ it }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <button class="journey-close" (click)="closeJourney()" aria-label="Close journey">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+
+  <div class="journey-caption">
+    <span class="jc-code">{{ currentStop().code }}</span>
+    <span class="jc-text">{{ currentStop().caption }}</span>
+  </div>
+
+  <div class="journey-nav">
+    <button (click)="journeyPrev()" [disabled]="journeyIndex() === 0" aria-label="Previous">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="journey-dots">
+      <span *ngFor="let s of journeyTour; let i = index"
+            [class.on]="i === journeyIndex()" (click)="flyToIndex(i)"></span>
+    </div>
+    <button (click)="journeyNext()" [disabled]="journeyIndex() === journeyTour.length - 1" aria-label="Next">
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <div class="journey-hint"><i class="fa-solid fa-arrows-left-right"></i> Use arrows · click any node · Esc to exit</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 &middot; Developed by Manu K Binu</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/manu-k-binu-613b081b9" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://github.com/manukbinu" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://wa.me/971541660983" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/__mr___mysterious___" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="mailto:mail4manukbinu@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<div class="wa-fab" [class.open]="waOpen()">
+  <a href="https://wa.me/971541660983" target="_blank" class="wa-opt">
+    <span class="wa-tip">Chat on WhatsApp · UAE</span>
+    UAE
+  </a>
+  <a href="https://wa.me/918129660117" target="_blank" class="wa-opt">
+    <span class="wa-tip">Chat on WhatsApp · India</span>
+    IND
+  </a>
+  <button class="wa-main" (click)="toggleWa()" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </button>
+</div>
