@@ -1,5 +1,5 @@
 <!-- NAVBAR -->
-<nav class="navbar" [class.scrolled]="scrolled()">
+<nav class="navbar" [class.scrolled]="scrolled()" [class.menu-open]="menuOpen()">
   <div class="nav-container">
     <a class="logo" (click)="scrollTo('#hero')">Manu K Binu</a>
     <ul class="nav-links" [class.open]="menuOpen()">
@@ -9,7 +9,7 @@
         </a>
       </li>
       <li>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail4manukbinu@gmail.com&su=Hiring%20Inquiry%20%E2%80%94%20Manu%20K%20Binu" target="_blank" rel="noopener" class="nav-cta">Hire Me</a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail4manukbinu@gmail.com&su=Hiring%20Inquiry%20%E2%80%94%20Manu%20K%20Binu" target="_blank" rel="noopener" class="nav-cta" appMagnetic>Hire Me</a>
       </li>
     </ul>
     <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen()">
@@ -49,7 +49,7 @@
         <button (click)="openJourney()" class="btn btn-journey">
           <i class="fa-solid fa-compass"></i> Explore My Journey
         </button>
-        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mail4manukbinu@gmail.com&amp;su=Hello%20Manu" target="_blank" rel="noopener" class="btn btn-primary">
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mail4manukbinu@gmail.com&amp;su=Hello%20Manu" target="_blank" rel="noopener" class="btn btn-primary" appMagnetic>
           <i class="fa-solid fa-envelope"></i> Get In Touch
         </a>
         <a href="Manu-K-Binu-CV.pdf" download="Manu-K-Binu-CV.pdf" class="btn btn-outline">
@@ -83,9 +83,7 @@
     </div>
   </div>
 
-  <div class="hero-scroll-indicator">
-    <div class="scroll-dot"></div>
-  </div>
+
 </section>
 
 <!-- ABOUT -->
@@ -175,7 +173,7 @@
     <div class="skills-block">
       <h3 class="skills-subtitle"><i class="fa-solid fa-code"></i> Technical Skills</h3>
       <div class="tech-grid">
-        <div class="tech-card" *ngFor="let group of techSkills">
+        <div class="tech-card" *ngFor="let group of techSkills" appTilt>
           <h4 class="tech-cat">{{ group.category }}</h4>
           <div class="tech-tags">
             <span class="tag tag-tech" *ngFor="let item of group.items">{{ item }}</span>
@@ -225,7 +223,7 @@
       <h2 class="section-title">Key Enterprise Projects</h2>
     </div>
     <div class="projects-grid">
-      <div class="project-card" *ngFor="let proj of projects">
+      <div class="project-card" *ngFor="let proj of projects" appTilt>
         <div class="project-icon">
           <i class="fa-solid {{ proj.icon }}"></i>
         </div>
@@ -251,7 +249,7 @@
     </div>
     <div class="recognition-grid">
       <!-- LinkedIn Post Card -->
-      <a href="https://www.linkedin.com/posts/ionob-stimes-leadership-share-7430501828020121600-6G4v/" target="_blank" class="linkedin-post-card">
+      <a href="https://www.linkedin.com/posts/ionob-stimes-leadership-share-7430501828020121600-6G4v/" target="_blank" class="linkedin-post-card" appTilt>
         <div class="lp-header">
           <div class="lp-brand">
             <div class="lp-logo"><i class="fa-brands fa-linkedin"></i></div>
@@ -282,7 +280,7 @@
 
       <!-- Awards column -->
       <div class="award-cards">
-        <div class="award-card">
+        <div class="award-card" appTilt>
           <div class="award-icon gold"><i class="fa-solid fa-trophy"></i></div>
           <div class="award-info">
             <h3>Employee of the Year 2023</h3>
@@ -290,7 +288,7 @@
             <span class="award-company"><i class="fa-solid fa-building"></i> Ionob Innovations LLP</span>
           </div>
         </div>
-        <div class="award-card">
+        <div class="award-card" appTilt>
           <div class="award-icon cyan"><i class="fa-solid fa-bolt"></i></div>
           <div class="award-info">
             <h3>Quick Learner Award</h3>
@@ -298,7 +296,7 @@
             <span class="award-company"><i class="fa-solid fa-building"></i> Ionob Innovations LLP</span>
           </div>
         </div>
-        <div class="award-card">
+        <div class="award-card" appTilt>
           <div class="award-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
           <div class="award-info">
             <h3>3-Year Work Anniversary</h3>
@@ -318,7 +316,7 @@
       <span class="section-tag">Background</span>
       <h2 class="section-title">Education</h2>
     </div>
-    <div class="edu-card">
+    <div class="edu-card" appTilt>
       <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
       <div class="edu-body">
         <h3>Diploma in Computer Engineering</h3>
@@ -341,42 +339,42 @@
       </p>
     </div>
     <div class="contact-grid">
-      <a href="mailto:mail4manukbinu@gmail.com" class="contact-card">
+      <a href="mailto:mail4manukbinu@gmail.com" class="contact-card" appTilt>
         <i class="fa-solid fa-envelope"></i>
         <div>
           <span class="contact-label">Email</span>
           <span class="contact-value">mail4manukbinu&#64;gmail.com</span>
         </div>
       </a>
-      <a href="tel:+971541660983" class="contact-card">
+      <a href="tel:+971541660983" class="contact-card" appTilt>
         <i class="fa-solid fa-phone"></i>
         <div>
           <span class="contact-label">Phone (UAE)</span>
           <span class="contact-value">+971 541 660 983</span>
         </div>
       </a>
-      <a href="tel:+918129660117" class="contact-card">
+      <a href="tel:+918129660117" class="contact-card" appTilt>
         <i class="fa-solid fa-phone"></i>
         <div>
           <span class="contact-label">Phone (India)</span>
           <span class="contact-value">+91 812 966 0117</span>
         </div>
       </a>
-      <a href="https://www.linkedin.com/in/manu-k-binu-613b081b9" target="_blank" class="contact-card">
+      <a href="https://www.linkedin.com/in/manu-k-binu-613b081b9" target="_blank" class="contact-card" appTilt>
         <i class="fa-brands fa-linkedin"></i>
         <div>
           <span class="contact-label">LinkedIn</span>
           <span class="contact-value">linkedin.com/in/manukbinu</span>
         </div>
       </a>
-      <a href="https://github.com/manukbinu" target="_blank" class="contact-card">
+      <a href="https://github.com/manukbinu" target="_blank" class="contact-card" appTilt>
         <i class="fa-brands fa-github"></i>
         <div>
           <span class="contact-label">GitHub</span>
           <span class="contact-value">github.com/manukbinu</span>
         </div>
       </a>
-      <a href="https://www.instagram.com/__mr___mysterious___" target="_blank" class="contact-card">
+      <a href="https://www.instagram.com/__mr___mysterious___" target="_blank" class="contact-card" appTilt>
         <i class="fa-brands fa-instagram"></i>
         <div>
           <span class="contact-label">Instagram</span>
@@ -392,7 +390,7 @@
       </div>
     </div>
     <div class="contact-cta">
-      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mail4manukbinu@gmail.com&amp;su=Hello%20Manu" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+      <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=mail4manukbinu@gmail.com&amp;su=Hello%20Manu" target="_blank" rel="noopener" class="btn btn-primary btn-lg" appMagnetic>
         <i class="fa-solid fa-paper-plane"></i> Send Me a Message
       </a>
       <a href="Manu-K-Binu-CV.pdf" download="Manu-K-Binu-CV.pdf" class="btn btn-outline btn-lg">
@@ -472,11 +470,11 @@
 
 <!-- FLOATING WHATSAPP -->
 <div class="wa-fab" [class.open]="waOpen()">
-  <a href="https://wa.me/971541660983" target="_blank" class="wa-opt">
+  <a href="https://wa.me/971541660983" target="_blank" class="wa-opt opt-uae">
     <span class="wa-tip">Chat on WhatsApp · UAE</span>
     UAE
   </a>
-  <a href="https://wa.me/918129660117" target="_blank" class="wa-opt">
+  <a href="https://wa.me/918129660117" target="_blank" class="wa-opt opt-ind">
     <span class="wa-tip">Chat on WhatsApp · India</span>
     IND
   </a>
