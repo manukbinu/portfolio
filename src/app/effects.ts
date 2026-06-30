@@ -15,9 +15,7 @@ export function initEffects(): () => void {
     initCursorSpotlight(),
     initHeroEntrance(),
     initScrollReveal(),
-    initCardTilt(),
     initParallax(),
-    initMagneticButtons(),
     initCounters(),
     initFloatingGeometrics(),
   ];
@@ -154,18 +152,18 @@ function initCursorSpotlight(): () => void {
   const overlay = document.createElement('div');
   overlay.id = 'cursor-spotlight';
   overlay.style.cssText =
-    'position:fixed;inset:0;pointer-events:none;z-index:9998;transition:opacity 0.3s';
+    'position:fixed;inset:0;pointer-events:none;z-index:2;transition:opacity 0.3s';
   document.body.appendChild(overlay);
 
   let ox = -2000, oy = -2000, tx = -2000, ty = -2000, raf = 0;
 
   const tick = () => {
     raf = requestAnimationFrame(tick);
-    ox += (tx - ox) * 0.09;
-    oy += (ty - oy) * 0.09;
+    ox += (tx - ox) * 0.16;
+    oy += (ty - oy) * 0.16;
     overlay.style.background =
       `radial-gradient(700px circle at ${ox}px ${oy}px,` +
-      `rgba(26,86,219,0.065) 0%,rgba(6,182,212,0.025) 35%,transparent 65%)`;
+      `rgba(26,86,219,0.12) 0%,rgba(6,182,212,0.06) 35%,transparent 65%)`;
   };
 
   const onMove = (e: MouseEvent) => { tx = e.clientX; ty = e.clientY; };
@@ -311,69 +309,7 @@ function initScrollReveal(): () => void {
   return () => {};
 }
 
-// ─── 5. 3D CARD TILT ────────────────────────────────────────────────────────
-function initCardTilt(): () => void {
-  const SELECTORS = [
-    '.tech-card', '.project-card', '.contact-card:not(.no-link)',
-    '.award-card', '.linkedin-post-card', '.edu-card',
-  ];
-  const els = document.querySelectorAll<HTMLElement>(SELECTORS.join(','));
-  const rafs = new Map<HTMLElement, number>();
 
-  els.forEach(el => {
-    // Inner shine overlay
-    const shine = document.createElement('div');
-    shine.className = 'tilt-shine';
-    el.appendChild(shine);
-
-    let tx = 0, ty = 0, cx = 0, cy = 0;
-    let hovered = false;
-
-    const loop = () => {
-      if (!hovered && Math.abs(cx) < 0.05 && Math.abs(cy) < 0.05) {
-        rafs.delete(el);
-        return;
-      }
-      rafs.set(el, requestAnimationFrame(loop));
-      cx += (tx - cx) * 0.11;
-      cy += (ty - cy) * 0.11;
-      el.style.transform =
-        `perspective(900px) rotateX(${cy}deg) rotateY(${cx}deg) scale3d(1.025,1.025,1.025)`;
-    };
-
-    el.addEventListener('mousemove', (e: MouseEvent) => {
-      const r   = el.getBoundingClientRect();
-      const dx  = (e.clientX - r.left) / r.width  - 0.5;
-      const dy  = (e.clientY - r.top)  / r.height - 0.5;
-      tx = dx * 14;
-      ty = dy * -10;
-      const px = ((e.clientX - r.left) / r.width)  * 100;
-      const py = ((e.clientY - r.top)  / r.height) * 100;
-      shine.style.background =
-        `radial-gradient(circle at ${px}% ${py}%,rgba(255,255,255,0.09),transparent 55%)`;
-    });
-
-    el.addEventListener('mouseenter', () => {
-      hovered = true;
-      if (!rafs.has(el)) { rafs.set(el, requestAnimationFrame(loop)); }
-    });
-
-    el.addEventListener('mouseleave', () => {
-      hovered = false;
-      tx = 0; ty = 0;
-      shine.style.background = 'transparent';
-      if (!rafs.has(el)) { rafs.set(el, requestAnimationFrame(loop)); }
-    });
-  });
-
-  return () => {
-    rafs.forEach(id => cancelAnimationFrame(id));
-    els.forEach(el => {
-      el.querySelector('.tilt-shine')?.remove();
-      el.style.transform = '';
-    });
-  };
-}
 
 // ─── 6. MOUSE PARALLAX on hero elements ─────────────────────────────────────
 function initParallax(): () => void {
@@ -416,39 +352,7 @@ function initParallax(): () => void {
   };
 }
 
-// ─── 7. MAGNETIC BUTTONS ────────────────────────────────────────────────────
-function initMagneticButtons(): () => void {
-  const moveMap = new WeakMap<HTMLElement, (e: MouseEvent) => void>();
-  const offs: Array<() => void> = [];
-  const btns = document.querySelectorAll<HTMLElement>('.btn-primary, .nav-cta');
 
-  btns.forEach(btn => {
-    const onEnter = () => {
-      const fn = (e: MouseEvent) => {
-        const r  = btn.getBoundingClientRect();
-        const dx = e.clientX - (r.left + r.width / 2);
-        const dy = e.clientY - (r.top  + r.height / 2);
-        gsap.to(btn, { x: dx * 0.28, y: dy * 0.28, duration: 0.35, ease: 'power2.out',
-                        overwrite: true });
-      };
-      moveMap.set(btn, fn);
-      window.addEventListener('mousemove', fn);
-    };
-    const onLeave = () => {
-      const fn = moveMap.get(btn);
-      if (fn) window.removeEventListener('mousemove', fn);
-      gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1,0.4)', overwrite: true });
-    };
-    btn.addEventListener('mouseenter', onEnter);
-    btn.addEventListener('mouseleave', onLeave);
-    offs.push(() => {
-      btn.removeEventListener('mouseenter', onEnter);
-      btn.removeEventListener('mouseleave', onLeave);
-    });
-  });
-
-  return () => offs.forEach(f => f());
-}
 
 // ─── 8. STAT COUNTER ANIMATION ──────────────────────────────────────────────
 function initCounters(): () => void {
